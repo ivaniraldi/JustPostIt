@@ -17,9 +17,10 @@ export default function NavBar() {
       <Link to="/create"><p class="block py-2 pr-4 pl-3 text-white"> Create</p></Link>
       <Link to="/createcategory"><p class="block py-2 pr-4 pl-3 text-white"> Create Category</p></Link>
 
-    </ul>
+    </ul> 
       </div>
     </nav> 
+
 
 
   )
