@@ -15,7 +15,7 @@ export default function NavBar() {
     <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
       <Link to="/"><p class="block py-2 pr-4 pl-3 text-white "> Home</p></Link>
       <Link to="/create"><p class="block py-2 pr-4 pl-3 text-white"> Create</p></Link>
-      <Link to="/createcategory"><p class="block py-2 pr-4 pl-3 text-white"> Create Category</p></Link> 
+      <Link to="/createcategory"><p class="block py-2 pr-4 pl-3 text-white"> Create Category</p></Link>
 
     </ul>
       </div>
