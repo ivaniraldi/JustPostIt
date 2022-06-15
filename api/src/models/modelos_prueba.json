@@ -1,0 +1,16 @@
+[
+    {
+      "id": 2,
+      "title": "example",
+      "content": "this is an example that i use to set-up the app",
+      "image": "https://www.insidehighered.com/sites/default/server_files/media/finding-new-ideas-problem-solving-vector-illustration-banner-teamwork-vector-id959212324.jpg",
+      "signature": "the_creator_again"
+    },
+    {
+      "id": 1,
+      "title": "JustPostIt",
+      "content": "A website where u can post everything. dude. try it out. now.",
+      "image": "https://i.ibb.co/jWT0J4h/Sin-t-tulo.png",
+      "signature": "the_creator"
+    }
+  ]

@@ -1,0 +1,101 @@
+import axios from 'axios';
+
+export function getPosts() {
+    return function(dispatch) {
+        axios.get('http://localhost:3001/post')
+            .then(response => {
+                dispatch({
+                    type: 'GET_POSTS',
+                    payload: response.data
+                });
+            }
+            )
+            .catch(error => {
+                console.log(error);
+            }
+            );
+        }
+}
+
+export function getPost(id) {
+    return function(dispatch) {
+        axios.get('http://localhost:3001/post/' + id)
+            .then(response => {
+                dispatch({
+                    type: 'GET_POST',
+                    payload: response.data
+                });
+            }
+            )
+            .catch(error => {
+                console.log(error);
+            }
+            );
+        }
+}
+
+export function createPost(post) {
+    return function(dispatch) {
+        axios.post('http://localhost:3001/post', post)
+            .then(response => {
+                dispatch({
+                    type: 'CREATE_POST',
+                    payload: response.data
+                });
+            }
+            )
+            .catch(error => {
+                console.log(error);
+            }
+            );
+        }
+}
+export function deletePost(id) {
+    return function(dispatch) {
+        axios.delete('http://localhost:3001/post/' + id)
+            .then(response => {
+                dispatch({
+                    type: 'DELETE_POST',
+                    payload: id
+                });
+            }
+            )
+            .catch(error => {
+                console.log(error);
+            }
+            );
+        }
+}
+export function editPost(post) {
+    return function(dispatch) {
+        axios.put('http://localhost:3001/post/' + post._id, post)
+            .then(response => {
+                dispatch({
+                    type: 'EDIT_POST',
+                    payload: response.data
+                });
+            }
+            )
+            .catch(error => {
+                console.log(error);
+            }
+            );
+        }
+}
+
+export function getCategories() {
+    return function(dispatch) {
+        axios.get('http://localhost:3001/categories')
+            .then(response => {
+                dispatch({
+                    type: 'GET_CATEGORIES',
+                    payload: response.data
+                });
+            }
+            )
+            .catch(error => {
+                console.log(error);
+            }
+            );
+        }
+}
