@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export function getPosts() {
     return function(dispatch) {
-        axios.get('http://localhost:3001/post')
+        axios.get('/post')
             .then(response => {
                 dispatch({
                     type: 'GET_POSTS',
@@ -19,7 +19,7 @@ export function getPosts() {
 
 export function getPost(id) {
     return function(dispatch) {
-        axios.get('http://localhost:3001/post/' + id)
+        axios.get('/post/' + id)
             .then(response => {
                 dispatch({
                     type: 'GET_POST',
@@ -36,7 +36,7 @@ export function getPost(id) {
 
 export function createPost(post) {
     return function(dispatch) {
-        axios.post('http://localhost:3001/post', post)
+        axios.post('/post', post)
             .then(response => {
                 dispatch({
                     type: 'CREATE_POST',
@@ -52,7 +52,7 @@ export function createPost(post) {
 }
 export function deletePost(id) {
     return function(dispatch) {
-        axios.delete('http://localhost:3001/post/' + id)
+        axios.delete('/post/' + id)
             .then(response => {
                 dispatch({
                     type: 'DELETE_POST',
@@ -68,7 +68,7 @@ export function deletePost(id) {
 }
 export function editPost(post) {
     return function(dispatch) {
-        axios.put('http://localhost:3001/post/' + post._id, post)
+        axios.put('/post/' + post._id, post)
             .then(response => {
                 dispatch({
                     type: 'EDIT_POST',
@@ -85,7 +85,7 @@ export function editPost(post) {
 
 export function getCategories() {
     return function(dispatch) {
-        axios.get('http://localhost:3001/categories')
+        axios.get('/categories')
             .then(response => {
                 dispatch({
                     type: 'GET_CATEGORIES',
