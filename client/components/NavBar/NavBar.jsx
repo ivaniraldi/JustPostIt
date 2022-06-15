@@ -19,7 +19,7 @@ export default function NavBar() {
 
     </ul>
       </div>
-    </nav>
+    </nav> 
 
 
   )
