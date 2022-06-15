@@ -8,7 +8,8 @@ import store from "../redux/store"
 import axios from 'axios'
 
 
-axios.defaults.baseURL = import.meta.env.REACT_APP_API || "http://localhost:3001"
+axios.defaults.baseURL =  "https://justposthis.herokuapp.com/"
+
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
