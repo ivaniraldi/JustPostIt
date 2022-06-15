@@ -4,6 +4,7 @@ PostDetail
 import { Routes, Route, Router } from "react-router-dom";
 import PostDetail from '../components/PostDetail/PostDetail';
 import Create from '../components/Create/Create';
+import CreateCategory from '../components/Create/CreateCategory';
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
       <Route path='/post/:id' element={<PostDetail/>} />
       <Route path="*" element={<Home />} />
       <Route path="/create" element={<Create />} />
+      <Route path="/createcategory" element={<CreateCategory />} />
+
 
 
     </Routes>

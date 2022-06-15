@@ -99,3 +99,19 @@ export function getCategories() {
             );
         }
 }
+export function createCategory(category) {
+    return function(dispatch) {
+        axios.post('/categories', category)
+            .then(response => {
+                dispatch({
+                    type: 'CREATE_CATEGORY',
+                    payload: response.data
+                });
+            }
+            )
+            .catch(error => {
+                console.log(error);
+            }
+            );
+        }
+}

@@ -47,6 +47,12 @@ const rootReducer = (state = initialState, action) => {
                 isLoading: false,
                 categories: action.payload,
             }
+        case "CREATE_CATEGORY":
+            return {
+                ...state,
+                isLoading: false,
+                categories: [...state.categories, action.payload],
+            }
             
             
             

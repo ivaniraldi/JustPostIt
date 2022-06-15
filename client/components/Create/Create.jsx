@@ -3,6 +3,7 @@ import { createPost, getCategories } from '../../redux/actions'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import NavBar from '../NavBar/NavBar'
+import CreateCategory from './CreateCategory'
 
 export default function Create() {
     const dispatch = useDispatch()
@@ -84,6 +85,7 @@ export default function Create() {
     return (
         <div >
             <NavBar />
+            
             <div className='flex justify-center mt-4' >
                 <div className='w-full max-w-xs'
                 >
