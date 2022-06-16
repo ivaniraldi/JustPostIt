@@ -28,7 +28,7 @@ export default function Home() {
       <div id="mobile" className='contents sm:hidden'>
         <div className='flex justify-center'>
         <NavBar />
-          <div className='m-10'>
+          <div className='mx-4 mt-12'>
         <Cards/>
 
           </div>
