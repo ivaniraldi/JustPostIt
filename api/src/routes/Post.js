@@ -47,9 +47,13 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
     const { title, content, image, signature, categories } = req.body;
-    const post = await Post.create({title,content,image,signature});
+    const createdAt= new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})
+
+
+    const post = await Post.create({title,content,image,signature, createdAt});
     const cats = categories?.map(async c => {
     const categ = await Categories.findByPk(c);
+    
     post.addCategory(categ);
     });
     await Promise.all(cats)

@@ -1,3 +1,59 @@
 body{
-  background-color: #1E2029;
+  background-color: #18191a;
+}
+input::placeholder{
+  color: #bababa81;
+}
+textarea::placeholder{
+  color: #bababa81;
+}
+#buttonPost{
+  background-color: #362855;
+  border: none;
+  border-radius: 5px;
+  font-weight: 700;
+  color: #e1e1e1;
+  height: 5vh;
+}
+#buttonPost:hover{
+  background-color: #4e3d71;
+  border: none;
+  border-radius: 5px;
+  font-weight: 700;
+  color: #dbdbdb;
+  height: 5vh;
+}
+/* if the images dont have a src are not visible */
+#imgError:not([src]){
+  display: none;
+}
+#contenedor {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+#principal {
+  width: 75%;
+}
+#sidebar {
+  width: 25%;
+}
+#navBarIcons{
+  width: 25vw;
+  margin-right: 8vw;
+}
+
+
+
+@media screen and (max-width: 640px){
+  #navBarIcons{
+    width: 40vw;
+    margin-right: 8vw;
+  }
+}
+html {
+  scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+  display: none;
 }

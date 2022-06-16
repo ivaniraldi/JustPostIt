@@ -5,6 +5,7 @@ import { Routes, Route, Router } from "react-router-dom";
 import PostDetail from '../components/PostDetail/PostDetail';
 import Create from '../components/Create/Create';
 import CreateCategory from '../components/Create/CreateCategory';
+import ImageConverter from '../components/ImageUpload/ImageConverter';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="*" element={<Home />} />
       <Route path="/create" element={<Create />} />
       <Route path="/createcategory" element={<CreateCategory />} />
+      <Route path="/test" element={<ImageConverter />} />
 
 
 

@@ -15,7 +15,7 @@ module.exports = (sequelize) => {
     },
     content: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
     image: {
       type: DataTypes.STRING,
@@ -24,6 +24,10 @@ module.exports = (sequelize) => {
     signature: {
       type: DataTypes.STRING,
       allowNull: true,
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
     }
   }, {
     timestamps: false,

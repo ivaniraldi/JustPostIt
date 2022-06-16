@@ -1,0 +1,27 @@
+
+.searchBar{
+    padding: 0.25rem;
+    margin-left: 2vw;
+    font-weight: 600;
+    background: #ffffff1a;
+    color: #E3E3E3E3;
+    width: 20vw;
+    border-radius: 20px;
+}
+.searchBar::placeholder{
+    font-family: "Font Awesome 5 Free"; 
+    margin-left: 10px;
+}
+.searchBar:active, .searchBar:focus{
+    outline: none;
+}
+.searchBar:hover{
+    background: #ffffff25;
+}
+
+@media screen and (max-width: 640px){
+    .searchBar{
+        width: 40vw;
+    }
+}
+    

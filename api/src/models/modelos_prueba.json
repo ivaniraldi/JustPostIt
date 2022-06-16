@@ -1,16 +1,92 @@
 [
-    {
-      "id": 2,
-      "title": "example",
-      "content": "this is an example that i use to set-up the app",
-      "image": "https://www.insidehighered.com/sites/default/server_files/media/finding-new-ideas-problem-solving-vector-illustration-banner-teamwork-vector-id959212324.jpg",
-      "signature": "the_creator_again"
-    },
-    {
-      "id": 1,
-      "title": "JustPostIt",
-      "content": "A website where u can post everything. dude. try it out. now.",
-      "image": "https://i.ibb.co/jWT0J4h/Sin-t-tulo.png",
-      "signature": "the_creator"
-    }
-  ]
+  {
+    "id": 1,
+    "title": "Un poema",
+    "content": "Tus ojos son como dos luceros\nQue iluminan mi camino\nTu los apagaste\nY me hice mierda contra un pino",
+    "image": "https://www.google.com/search?client=ms-android-xiaomi-rev1&hl=es-US&tbm=isch&sa=1&q=ojos+imagenes+art&oq=ojos+imagenes+art&aqs=mobile-gws-lite..0l1#imgrc=NtTk0PbVRXlgqM",
+    "signature": "Literatura ",
+    "Categories": [
+      {
+        "name": "Literatura ",
+        "Post_Categories": {
+          "createdAt": "2022-06-15T15:35:39.773Z",
+          "updatedAt": "2022-06-15T15:35:39.773Z",
+          "PostId": 1,
+          "CategoryId": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "N.I.B Black Sabbath",
+    "content": "«N.I.B» es una canción lanzada por la banda británica de heavy metal, Black Sabbath. Primero apareció como el cuarto tema del primer álbum de la banda Black Sabbath.",
+    "image": "https://m.media-amazon.com/images/I/81D4ic8MxvL.jpg",
+    "signature": "Ivan.",
+    "Categories": [
+      {
+        "name": "Music",
+        "Post_Categories": {
+          "createdAt": "2022-06-15T15:40:51.762Z",
+          "updatedAt": "2022-06-15T15:40:51.762Z",
+          "PostId": 2,
+          "CategoryId": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Franco",
+    "content": "Una vez conoci a un tipo que se llamaba Franco Bouzas, lo conoci gracias a mis amigos y puedo asegurar que no hay ser humano sobre la tierra mas perfecto y viril.",
+    "image": "https://images.app.goo.gl/oNrFvpYj1JncuTcz5",
+    "signature": "JóÒtTíÌtTáÀhH CABJ",
+    "Categories": [
+      {
+        "name": "Literatura ",
+        "Post_Categories": {
+          "createdAt": "2022-06-15T18:18:10.234Z",
+          "updatedAt": "2022-06-15T18:18:10.234Z",
+          "PostId": 3,
+          "CategoryId": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Hi",
+    "content": "Holi esto es un post ",
+    "image": "https://as01.epimg.net/epik/imagenes/2021/01/04/portada/1609769959_859161_1609770840_noticia_normal_recorte1.jpg",
+    "signature": "Anónimo ",
+    "Categories": [
+      {
+        "name": "Random",
+        "Post_Categories": {
+          "createdAt": "2022-06-15T19:56:59.809Z",
+          "updatedAt": "2022-06-15T19:56:59.809Z",
+          "PostId": 4,
+          "CategoryId": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "perdí",
+    "content": "perdí",
+    "image": "http xd",
+    "signature": "perder",
+    "Categories": [
+      {
+        "name": "Random",
+        "Post_Categories": {
+          "createdAt": "2022-06-15T20:00:21.143Z",
+          "updatedAt": "2022-06-15T20:00:21.143Z",
+          "PostId": 5,
+          "CategoryId": 2
+        }
+      }
+    ]
+  }
+]

@@ -53,7 +53,18 @@ const rootReducer = (state = initialState, action) => {
                 isLoading: false,
                 categories: [...state.categories, action.payload],
             }
+        case "FILTER_POSTS":
+            return {
+                ...state,
+                isLoading: false,
+                filteredPosts: state.posts.filter(post => 
+                    post.title.toLowerCase().includes(action.payload.toLowerCase()) ||
+                    post.content.toLowerCase().includes(action.payload.toLowerCase()) ||
+                    post.signature.toLowerCase().includes(action.payload.toLowerCase())),
+                
+            }
             
+
             
             
 

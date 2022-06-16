@@ -33,7 +33,7 @@ export default function CreateCategory() {
     <div>
         <NavBar></NavBar>
         
-        <div className="flex justify-center text-white">
+        <div className="flex justify-center pt-24 text-white">
             <div>
                 <form onSubmit={handleSubmit}>
                     <div className="flex flex-col">

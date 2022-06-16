@@ -3,15 +3,17 @@ import { createPost, getCategories } from '../../redux/actions'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import NavBar from '../NavBar/NavBar'
-import CreateCategory from './CreateCategory'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCamera } from '@fortawesome/free-solid-svg-icons'
 
 export default function Create() {
     const dispatch = useDispatch()
+    const [image, setImage] = useState('')
+    const [loading, setLoading] = useState(false)
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     const [signature, setSignature] = useState('')
     const [categories, setCategories] = useState([])
-    const [image, setImage] = useState('')
     const [error, setError] = useState('')
     useEffect(() => {
         dispatch(getCategories())
@@ -25,6 +27,8 @@ export default function Create() {
         return category.name
 
     }
+
+
     const post = {
         title: title,
         content: content,
@@ -35,22 +39,19 @@ export default function Create() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (title.length < 1 || content.length < 1 || signature.length < 1 || categories.length < 1 || image.length < 1) {
+        if (title.length < 1 || content.length < 1 || signature.length < 1) {
             setError('Please fill out all fields')
             console.log(post)
-        }
-
-        else if (!image.startsWith('http')) {
-            setError('Please enter a valid image url')
         }
         else if (content.includes("<script>" || "<script/>")) {
             setError('What are you doing? Remove that script tag.')
         }
         else {
             console.log(post)
-            dispatch(createPost(post))
+            setTimeout(() => {
+            dispatch(createPost(post))}
+            , 5000)
             alert('Post created')
-
             setTitle('')
             setContent('')
             setSignature('')
@@ -71,9 +72,6 @@ export default function Create() {
         } else if (e.target.name === 'signature') {
             setSignature(e.target.value)
         }
-        else if (e.target.name === 'image') {
-            setImage(e.target.value)
-        }
         else if (e.target.name === 'categories') {
             if (!categories.includes(e.target.value)) {
                 setCategories([...categories, e.target.value])
@@ -82,64 +80,102 @@ export default function Create() {
     }
 
 
+    const uploadImage = async (e) => {
+        const files = e.target.files
+        const data = new FormData()
+        data.append('file', files[0])
+        data.append('upload_preset', 'ivansyko')
+        setLoading(true)
+        const res = await fetch(
+            'https://api.cloudinary.com/v1_1/ivansyko/image/upload',
+            {
+                method: 'POST',
+                body: data,
+
+            }
+        )
+        console.log(res)
+        const file = await res.json()
+        console.log(res)
+        setImage(file.secure_url)
+        setLoading(false)
+    }
+    const removeImage = () => {
+        setImage('')
+    }
+
+
     return (
-        <div >
-            <NavBar />
-            
-            <div className='flex justify-center mt-4' >
-                <div className='w-full max-w-xs'
+        <div>
+            <div className='hidden sm:content'>
+                <NavBar></NavBar>
+            </div>
+            <div className='' style={{
+                width: '100%',
+                height: '100%',
+            }}>
+                <form
+                    className='mt-5 rounded'
+                    style={{
+                        // backgroundColor: '#242526',
+                    }}
+                    onSubmit={handleSubmit}
                 >
-                    <form
-                        className='shadow-md rounded px-8 pt-6 pb-8 mb-4'
+                    <input className="shadow appearance-none w-full text-gray-300 leading-tight focus:outline-none focus:shadow-outline"
                         style={{
-                            backgroundColor: '#16171c',
-                        }}
-                        onSubmit={handleSubmit}
-                    >
-                        <label className="block text-gray-300 text-sm font-bold mb-2">Title:</label>
-                        <input className="shadow appearance-none border rounded w-full text-gray-300 leading-tight focus:outline-none focus:shadow-outline"
-                            style={{
-                                backgroundColor: '#26272e',
-                                borderColor: '#26272e',
-                                color: '#E3E3E3E3',
-                            }}
-                            type="text"
-                            name="title"
-                            value={title}
-                            onChange={handleChange}
-                        />
-                        <label className="block text-gray-300 text-sm font-bold mb-2">Content:</label>
-                        <textarea
-                            style={{
-                                backgroundColor: '#26272e',
-                                borderColor: '#26272e',
-                                color: '#E3E3E3E3',
-                            }}
-                            className="shadow appearance-none border rounded w-full text-gray-300 leading-tight focus:outline-none focus:shadow-outline h-32 text-xs"
-                            name="content"
-                            value={content}
-                            onChange={handleChange}
-                            cols="30"
-                            rows="10"
-                        />
-                        <label className="block text-gray-300 text-sm font-bold mb-2">Signature:</label>
-                        <input style={{
-                            backgroundColor: '#26272e',
-                            borderColor: '#26272e',
+                            backgroundColor: '#ffffff1a',
+                            border: "none",
+                            padding: "0.3vw",
+                            borderRadius: "5px",
                             color: '#E3E3E3E3',
-                        }} className="shadow appearance-none border rounded w-full text-gray-300 leading-tight focus:outline-none focus:shadow-outline"
-                            type="text"
-                            name="signature"
-                            value={signature}
-                            onChange={handleChange}
-                        />
-                        <label className="block text-gray-300 text-sm font-bold mb-2">Categories:</label>
+                        }}
+                        placeholder="Title"
+                        type="text"
+                        name="title"
+                        value={title}
+                        onChange={handleChange}
+                    />
+                    <label className="block text-gray-300 text-sm font-bold mb-1"></label>
+                    <textarea
+                        style={{
+                            backgroundColor: '#ffffff1a',
+                            border: "none",
+                            padding: "0.3vw",
+                            borderRadius: "5px",
+                            color: '#E3E3E3E3',
+                        }}
+                        className="shadow appearance-none border w-full text-gray-300 leading-tight focus:outline-none focus:shadow-outline h-32 text-xs"
+                        name="content"
+                        value={content}
+                        placeholder="Share a thought..."
+                        onChange={handleChange}
+                        required={true}
+                        cols="30"
+                        rows="10"
+                    />
+                    <label className="block text-gray-300 text-sm font-bold"></label>
+                    <input style={{
+                        backgroundColor: '#ffffff1a',
+                        border: "none",
+                        padding: "0.3vw",
+                        borderRadius: "5px",
+                        color: '#E3E3E3E3',
+                    }} className="shadow appearance-none border w-full text-gray-300 leading-tight focus:outline-none focus:shadow-outline"
+                        type="text"
+                        name="signature"
+                        placeholder='Alias'
+                        value={signature}
+                        onChange={handleChange}
+                    />
+                    <div className='grid grid-cols-2'>
                         <select
-                            className="block  w-full bg-white border border-gray-400 hover:border-gray-500 rounded shadow leading-tight focus:outline-none text-sm focus:shadow-outline"
+                            className="block mt-3 bg-white border hover:border-gray-500 rounded shadow leading-tight focus:outline-none text-sm focus:shadow-outline"
                             name="categories"
                             style={{
-                                backgroundColor: '#26272e',
-                                borderColor: '#26272e',
+                                backgroundColor: '#ffffff1a',
+                                border: "none",
+                                padding: "0.3vw",
+                                borderRadius: "5px",
                                 color: '#E3E3E3E3',
                             }}
 
@@ -151,47 +187,60 @@ export default function Create() {
                                 <option key={category.id} value={category.id}>{category.name}</option>
                             ))}
                         </select>
-                        <div className='block'>
+                        <label htmlFor="inputImage"
+                            className="block mt-3 ml-1
+                         bg-white border hover:border-gray-500 rounded shadow leading-tight focus:outline-none text-sm focus:shadow-outline"
+                            style={{
+                                backgroundColor: '#ffffff1a',
+                                border: "none",
+                                padding: "0.3vw",
+                                borderRadius: "5px",
+                                color: '#E3E3E3E3',
+                                textAlign: 'center',
+                            }}
+                        >
+                            <FontAwesomeIcon icon={faCamera} />
+                            <input id="inputImage" onChange={uploadImage} className="hidden" type="file" />
+                        </label>
+                    </div>
+                    <div className='block'>
 
-                            {post.categories.length > 0 && <div className='flex justify-center'><p className="text-gray-600 text-xs italic mt-2">Click to remove</p></div>}
-                            <div className='grid grid-cols-2 gap-1'>
+                        <div className='grid grid-cols-3 gap-1'>
 
-                                {post.categories.map(c => (
+                            {post.categories.map(c => (
 
-                                    <button
-                                        className="shadow appearance-none border rounded text-gray-300 leading-tight focus:outline-none text-sm focus:shadow-outline "
-                                        key={c}
-                                        type="button"
-                                        onClick={removeCategory}
-                                        value={c}
-                                    >{searchCategory(c)}</button>
+                                <button
+                                    className="block mt-3 bg-white border hover:border-gray-500 rounded shadow leading-tight focus:outline-none text-sm focus:shadow-outline"
+                                    style={{
+                                        backgroundColor: '#ffffff1a',
+                                        border: "none",
+                                        padding: "0.3vw",
+                                        borderRadius: "5px",
+                                        color: '#E3E3E3E3',
+                                        textAlign: 'center',
+                                    }}
+                                    key={c}
+                                    type="button"
+                                    onClick={removeCategory}
+                                    value={c}
+                                >{searchCategory(c)}</button>
 
 
-                                ))}
-                            </div>
+                            ))}
                         </div>
-                        <label className="block text-gray-300 text-sm font-bold mb-2">Image URL:</label>
-                        <input style={{
-                            backgroundColor: '#26272e',
-                            borderColor: '#26272e',
-                            color: '#E3E3E3E3',
-                        }} className="shadow appearance-none border rounded w-full text-gray-300 leading-tight focus:outline-none focus:shadow-outline"
-                            type="text"
-                            name="image"
-                            value={image}
-                            onChange={handleChange}
-                        />
-                        <div className='flex justify-center mt-2'>
-                            <button className="border text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                                style={{
-                                    backgroundColor: '#9a6aff',
-                                    borderColor: '#26272e',
-                                    color: '#1e2029',
-                                }} type="submit">Submit</button>
+                        {post.categories.length > 0 && <div className='flex justify-center'><p className="text-gray-600 text-xs italic mt-2">Click to remove</p></div>}
+                    </div>
+
+
+                    <div className='grid grid-cols-2 mt-2'>
+                        <div className='flex justify-center'>
+                            <button onClick={removeImage} className="hidden" type="button" id='removeImage' />
+                            {loading ? <p>Loading...</p> : <div className='mx-5' style={{ width: "10vw" }}><label htmlFor="removeImage"><img id="imgError" src={image || null} alt="No image." /></label></div>}
                         </div>
-                        <p className="text-gray-700 text-xs italic mt-2">{error}</p>
-                    </form>
-                </div>
+                        <button id="buttonPost" className="shadow appearance-none leading-tight focus:outline-none focus:shadow-outline" type="submit">Post it!</button>
+                    </div>
+                    <p className="text-gray-700 text-xs italic mt-2">{error}</p>
+                </form>
             </div>
         </div>
     )

@@ -115,3 +115,9 @@ export function createCategory(category) {
             );
         }
 }
+export function filterPosts(post) {
+    return {
+        type: 'FILTER_POSTS',
+        payload: post
+    }
+}
