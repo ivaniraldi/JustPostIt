@@ -71,7 +71,7 @@ textarea::placeholder{
 }
 html {
   scroll-behavior: smooth;
-  word-break: break-all;
+  word-break: break-word;
 }
 ::-webkit-scrollbar {
   display: none;
