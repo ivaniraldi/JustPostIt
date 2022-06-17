@@ -102,7 +102,7 @@ export default function Card({ id, title, content, image, Categories, createdAt,
   }
 
   return (
-    <div className='' style={{
+    <div id="#card" className='' style={{
       width: '100%',
       height: '100%',
     }}>
@@ -118,7 +118,7 @@ export default function Card({ id, title, content, image, Categories, createdAt,
           <img className='w-10 inline mt-2 ml-2 mr-2' src="https://i.ibb.co/3mHWrhT/letra-p.png" alt="" />
           <div className=''>
 
-            <h1 className="mt-2 font-medium text-sm tracking-tight text-gray-400">Usuario 00{postCard.id}</h1>
+            <h1 className="mt-2 font-medium text-sm tracking-tight text-gray-400">User00{postCard.id}</h1>
 
             <Link to={`/post/${postCard.id}`} state={{ post }}><p className='text-gray-500 text-xs' >{timeAgoPost} • <FontAwesomeIcon icon={faEarth} /></p></Link>
           </div>
@@ -126,7 +126,7 @@ export default function Card({ id, title, content, image, Categories, createdAt,
         <div className='mx-4 mt-2'>
           <h1 className="text-gray-300 text-lg font-bold">{postCard.title}</h1>
 
-          <p className="mb-3 font-normal" style={{ color: "#E3E3E3E3" }}>{postCard.content}</p>
+          <p id='#cardText' className="mb-3 font-normal" style={{ color: "#E3E3E3E3", whiteSpace:"pre-line" }}>{postCard.content}</p>
         </div>
 
         <img className={`mt-3 w-full`}style={{ maxHeight: "auto" }} src={postCard.image} alt="" />
@@ -148,7 +148,7 @@ export default function Card({ id, title, content, image, Categories, createdAt,
             <p className="text-right mr-2" style={{ color: "#E3E3E3E3" }}>{postCard.signature}.</p>
 
           </div>
-          <div className='grid grid-cols-4 text-center mt-2' >{postCard.Categories?.map((category, i) => {
+          <div className='grid sm:grid-cols-4 grid-cols-3 text-center mt-2' >{postCard.Categories?.map((category, i) => {
             return <span key={i} id="buttonCat" className='mr-2 p-2 mt-1 text-xs sm:text-base' style={{
               color: '#ffffff99',
               fontWeight: '500',
@@ -172,7 +172,7 @@ export default function Card({ id, title, content, image, Categories, createdAt,
             return <div key={i}>
               <div className='w-full text-gray-300 rounded-xl p-1 my-2' style={{ border: "1px solid #ffffff1a" }}>
                 <p className="text-xs font-bold text-gray-500">{c.user}</p>
-                <p>{c.comment}</p>
+                <p style={{whiteSpace:"pre-line"}}>{c.comment}</p>
               </div>
             </div>
           })}
@@ -183,7 +183,7 @@ export default function Card({ id, title, content, image, Categories, createdAt,
               <div className='w-full text-gray-300 rounded-xl p-2 my-2' style={{ border: "1px solid #ffffff1a" }}>
                 <div className=''>
                   <p className="text-xs font-bold text-gray-500">{commentsParsed[commentsParsed.length - 3].user}</p>
-                  <p>{commentsParsed[commentsParsed.length - 3].comment}</p>
+                  <p style={{whiteSpace:"pre-line"}}>{commentsParsed[commentsParsed.length - 3].comment}</p>
                 </div>
               </div>
             </div>
@@ -193,7 +193,7 @@ export default function Card({ id, title, content, image, Categories, createdAt,
               <div className='w-full text-gray-300 rounded-xl p-2 my-2' style={{ border: "1px solid #ffffff1a" }}>
                 <div className=''>
                   <p className="text-xs font-bold text-gray-500">{commentsParsed[commentsParsed.length - 2].user}</p>
-                  <p>{commentsParsed[commentsParsed.length - 2].comment}</p>
+                  <p style={{whiteSpace:"pre-line"}}>{commentsParsed[commentsParsed.length - 2].comment}</p>
                 </div>
               </div>
             </div>
@@ -203,7 +203,7 @@ export default function Card({ id, title, content, image, Categories, createdAt,
               <div className='w-full text-gray-300 rounded-xl p-2 my-2' style={{ border: "1px solid #ffffff1a" }}>
                 <div className=''>
                   <p className="text-xs font-bold text-gray-500">{commentsParsed[commentsParsed.length - 1].user}</p>
-                  <p>{commentsParsed[commentsParsed.length - 1].comment}</p>
+                  <p style={{whiteSpace:"pre-line"}}>{commentsParsed[commentsParsed.length - 1].comment}</p>
                 </div>
               </div>
             </div>

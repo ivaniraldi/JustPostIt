@@ -19,7 +19,6 @@ export default function NavBar() {
     dispatch(filterPosts(e.target.value))
   }
   const postButton =  location.pathname === "/" ? true : false;
-  console.log(postButton)
   return (
     <nav className="flex  px-2 sm:px-4 pt-1 fixed w-full "
     style={{

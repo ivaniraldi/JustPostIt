@@ -8,8 +8,10 @@ import store from "../redux/store"
 import axios from 'axios'
 
 
-axios.defaults.baseURL =  "https://justposthis.herokuapp.com/"
-// axios.defaults.baseURL =  "http://localhost:3001/"
+const heroku =  "https://justposthis.herokuapp.com/"
+const local= "http://localhost:3001/"
+
+axios.defaults.baseURL=heroku;
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(

@@ -72,7 +72,11 @@ textarea::placeholder{
 html {
   scroll-behavior: smooth;
   word-break: break-word;
+  
 }
 ::-webkit-scrollbar {
   display: none;
+}
+#cardText{
+  white-space: pre-line;
 }

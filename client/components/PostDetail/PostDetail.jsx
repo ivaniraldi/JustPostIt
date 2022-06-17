@@ -24,7 +24,7 @@ export default function PostDetail() {
     <div className=''>
       <NavBar />
       <div className="flex justify-center pt-16">
-        <div className='w-1/2 '>
+        <div className='sm:w-1/2 mx-2 '>
           <CardDetail id={post.id} {...post} comments={post.comments} />
         </div>
 

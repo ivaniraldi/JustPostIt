@@ -122,7 +122,7 @@ export default function CardDetail({ id }) {
           <div className='mx-4 mt-2'>
             <h1 className="text-gray-300 text-lg font-bold">{postCard.title}</h1>
   
-            <p className="mb-3 font-normal" style={{ color: "#E3E3E3E3" }}>{postCard.content}</p>
+            <p className="mb-3 font-normal" style={{ color: "#E3E3E3E3",whiteSpace:"pre-line" }}>{postCard.content}</p>
           </div>
   
           <img className={`mt-3 w-full`}style={{ maxHeight: "auto" }} src={postCard.image} alt="" />
@@ -144,12 +144,13 @@ export default function CardDetail({ id }) {
               <p className="text-right mr-2" style={{ color: "#E3E3E3E3" }}>{postCard.signature}.</p>
   
             </div>
-            <div className='grid grid-cols-4 text-center mt-2' >{postCard.Categories?.map((category, i) => {
+            <div className='grid sm:grid-cols-4 grid-cols-3 text-center mt-2' >{postCard.Categories?.map((category, i) => {
               return <span key={i} id="buttonCat" className='mr-2 p-2 mt-1 text-xs sm:text-base' style={{
                 color: '#ffffff99',
                 fontWeight: '500',
                 border: '1px solid #ffffff1a',
                 borderRadius: '10px',
+                whiteSpace: 'pre-line',
                 cursor: 'pointer',
               }}
                 onClick={() => changeCategory(category.name)}
@@ -168,7 +169,7 @@ export default function CardDetail({ id }) {
               return <div key={i}>
                 <div className='w-full text-gray-300 rounded-xl p-1 my-2' style={{ border: "1px solid #ffffff1a" }}>
                   <p className="text-xs font-bold text-gray-500">{c.user}</p>
-                  <p>{c.comment}</p>
+                  <p style={{whiteSpace:"pre-line"}}>{c.comment}</p>
                 </div>
               </div>
             })}
@@ -179,7 +180,7 @@ export default function CardDetail({ id }) {
                 <div className='w-full text-gray-300 rounded-xl p-2 my-2' style={{ border: "1px solid #ffffff1a" }}>
                   <div className=''>
                     <p className="text-xs font-bold text-gray-500">{commentsParsed[commentsParsed.length - 3].user}</p>
-                    <p>{commentsParsed[commentsParsed.length - 3].comment}</p>
+                    <p style={{whiteSpace:"pre-line"}}>{commentsParsed[commentsParsed.length - 3].comment}</p>
                   </div>
                 </div>
               </div>
@@ -189,7 +190,7 @@ export default function CardDetail({ id }) {
                 <div className='w-full text-gray-300 rounded-xl p-2 my-2' style={{ border: "1px solid #ffffff1a" }}>
                   <div className=''>
                     <p className="text-xs font-bold text-gray-500">{commentsParsed[commentsParsed.length - 2].user}</p>
-                    <p>{commentsParsed[commentsParsed.length - 2].comment}</p>
+                    <p style={{whiteSpace:"pre-line"}}>{commentsParsed[commentsParsed.length - 2].comment}</p>
                   </div>
                 </div>
               </div>
@@ -199,7 +200,7 @@ export default function CardDetail({ id }) {
                 <div className='w-full text-gray-300 rounded-xl p-2 my-2' style={{ border: "1px solid #ffffff1a" }}>
                   <div className=''>
                     <p className="text-xs font-bold text-gray-500">{commentsParsed[commentsParsed.length - 1].user}</p>
-                    <p>{commentsParsed[commentsParsed.length - 1].comment}</p>
+                    <p style={{whiteSpace:"pre-line"}}>{commentsParsed[commentsParsed.length - 1].comment}</p>
                   </div>
                 </div>
               </div>
@@ -214,7 +215,7 @@ export default function CardDetail({ id }) {
                     backgroundColor: '#ffffff1a',
                     border: "none",
                     padding: "0.3rem",
-                    borderRadius: "px",
+                    borderRadius: "8px",
                     color: '#E3E3E3E3',
                   }}
                   placeholder="Write a comment..."
