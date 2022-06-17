@@ -33,21 +33,14 @@ export default function CreateCategory() {
     <div>
         <NavBar></NavBar>
         
-        <div className="flex justify-center pt-24 text-white">
-            <div>
-                <form onSubmit={handleSubmit}>
-                    <div className="flex flex-col">
-                        <label htmlFor="name">Create a category:</label>
-                        <input className='mt-1 mb-2' type="text" id="name" placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} />
-                        <button style={{
-                            marginTop: '10px',
-                            backgroundColor: '#9a6aff',
-                        }}type="submit">Create</button>
-                        </div>
-
-                    </form>
+        <div className="flex justify-center pt-16 text-white">
+            <div className='flex justify-center mb-5 mx-10'>
+                <h1 className='text-center font-bold sm:text-2xl'>Oh! It seems that you cannot access this{<br/>} function! but hey! here's a hug</h1>
             </div>
         </div>
+                <div className='flex justify-center'>
+                <img className="sm:w-1/4 w-1/2" src='https://media1.giphy.com/media/gHKnFHkGPUmG4GTzUt/giphy.gif?cid=790b76116cb4b409382caef7322fd59ff371632363d4d292&rid=giphy.gif&ct=g'/>
+                </div>
     </div>
   )
 }

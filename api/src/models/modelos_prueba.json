@@ -3,16 +3,17 @@
     "id": 1,
     "title": "Un poema",
     "content": "Tus ojos son como dos luceros\nQue iluminan mi camino\nTu los apagaste\nY me hice mierda contra un pino",
-    "image": "https://www.google.com/search?client=ms-android-xiaomi-rev1&hl=es-US&tbm=isch&sa=1&q=ojos+imagenes+art&oq=ojos+imagenes+art&aqs=mobile-gws-lite..0l1#imgrc=NtTk0PbVRXlgqM",
-    "signature": "Literatura ",
+    "image": "https://www.pngfind.com/pngs/m/545-5459514_es-un-ojo-septiceye-sam-pixel-art-hd.png",
+    "signature": "Franco",
+    "createdAt": "2022-06-16T00:00:00.000Z",
     "Categories": [
       {
-        "name": "Literatura ",
+        "name": "Literatura",
         "Post_Categories": {
-          "createdAt": "2022-06-15T15:35:39.773Z",
-          "updatedAt": "2022-06-15T15:35:39.773Z",
+          "createdAt": "2022-06-16T11:16:56.299Z",
+          "updatedAt": "2022-06-16T11:16:56.299Z",
           "PostId": 1,
-          "CategoryId": 4
+          "CategoryId": 2
         }
       }
     ]
@@ -22,15 +23,25 @@
     "title": "N.I.B Black Sabbath",
     "content": "«N.I.B» es una canción lanzada por la banda británica de heavy metal, Black Sabbath. Primero apareció como el cuarto tema del primer álbum de la banda Black Sabbath.",
     "image": "https://m.media-amazon.com/images/I/81D4ic8MxvL.jpg",
-    "signature": "Ivan.",
+    "signature": "Ivan",
+    "createdAt": "2022-06-16T00:00:00.000Z",
     "Categories": [
       {
         "name": "Music",
         "Post_Categories": {
-          "createdAt": "2022-06-15T15:40:51.762Z",
-          "updatedAt": "2022-06-15T15:40:51.762Z",
+          "createdAt": "2022-06-16T11:19:25.997Z",
+          "updatedAt": "2022-06-16T11:19:25.997Z",
           "PostId": 2,
-          "CategoryId": 1
+          "CategoryId": 4
+        }
+      },
+      {
+        "name": "Random",
+        "Post_Categories": {
+          "createdAt": "2022-06-16T11:19:26.000Z",
+          "updatedAt": "2022-06-16T11:19:26.000Z",
+          "PostId": 2,
+          "CategoryId": 3
         }
       }
     ]
@@ -39,54 +50,65 @@
     "id": 3,
     "title": "Franco",
     "content": "Una vez conoci a un tipo que se llamaba Franco Bouzas, lo conoci gracias a mis amigos y puedo asegurar que no hay ser humano sobre la tierra mas perfecto y viril.",
-    "image": "https://images.app.goo.gl/oNrFvpYj1JncuTcz5",
+    "image": "https://pbs.twimg.com/media/FOUNa1-XsAsuGqV.jpg",
     "signature": "JóÒtTíÌtTáÀhH CABJ",
-    "Categories": [
-      {
-        "name": "Literatura ",
-        "Post_Categories": {
-          "createdAt": "2022-06-15T18:18:10.234Z",
-          "updatedAt": "2022-06-15T18:18:10.234Z",
-          "PostId": 3,
-          "CategoryId": 4
-        }
-      }
-    ]
-  },
-  {
-    "id": 4,
-    "title": "Hi",
-    "content": "Holi esto es un post ",
-    "image": "https://as01.epimg.net/epik/imagenes/2021/01/04/portada/1609769959_859161_1609770840_noticia_normal_recorte1.jpg",
-    "signature": "Anónimo ",
+    "createdAt": "2022-06-16T00:00:00.000Z",
     "Categories": [
       {
         "name": "Random",
         "Post_Categories": {
-          "createdAt": "2022-06-15T19:56:59.809Z",
-          "updatedAt": "2022-06-15T19:56:59.809Z",
-          "PostId": 4,
-          "CategoryId": 2
+          "createdAt": "2022-06-16T11:20:56.011Z",
+          "updatedAt": "2022-06-16T11:20:56.011Z",
+          "PostId": 3,
+          "CategoryId": 3
         }
       }
     ]
   },
   {
     "id": 5,
-    "title": "perdí",
-    "content": "perdí",
-    "image": "http xd",
-    "signature": "perder",
+    "title": "Un post de prueba",
+    "content": "es para ver que ande todo bien y no le pinte la loca a la aplicación, de paso posteo la imagen con la nueva cloud de la aplicación :)",
+    "image": "https://res.cloudinary.com/ivansyko/image/upload/v1655379238/jflejc23paeiqsfjttcw.png",
+    "signature": "Ivan",
+    "createdAt": "2022-06-16T00:00:00.000Z",
     "Categories": [
       {
         "name": "Random",
         "Post_Categories": {
-          "createdAt": "2022-06-15T20:00:21.143Z",
-          "updatedAt": "2022-06-15T20:00:21.143Z",
+          "createdAt": "2022-06-16T11:34:45.532Z",
+          "updatedAt": "2022-06-16T11:34:45.532Z",
+          "PostId": 5,
+          "CategoryId": 3
+        }
+      },
+      {
+        "name": "NSFW",
+        "Post_Categories": {
+          "createdAt": "2022-06-16T11:34:45.535Z",
+          "updatedAt": "2022-06-16T11:34:45.535Z",
+          "PostId": 5,
+          "CategoryId": 1
+        }
+      },
+      {
+        "name": "Literatura",
+        "Post_Categories": {
+          "createdAt": "2022-06-16T11:34:45.537Z",
+          "updatedAt": "2022-06-16T11:34:45.537Z",
           "PostId": 5,
           "CategoryId": 2
         }
       }
     ]
+  },
+  {
+    "id": 4,
+    "title": "perdí",
+    "content": "perdí",
+    "image": "",
+    "signature": "perder",
+    "createdAt": "2022-06-16T00:00:00.000Z",
+    "Categories": []
   }
 ]

@@ -21,9 +21,7 @@ export default function Create() {
         , [])
     const categoriesList = useSelector(state => state.categories)
     function searchCategory(id) {
-        console.log(id)
         const category = categoriesList.find(category => category.id == id)
-
         return category.name
 
     }
@@ -34,24 +32,23 @@ export default function Create() {
         content: content,
         signature: signature,
         categories: categories,
-        image: image
+        image: image,
+        comments: []
+
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
         if (title.length < 1 || content.length < 1 || signature.length < 1) {
             setError('Please fill out all fields')
-            console.log(post)
         }
         else if (content.includes("<script>" || "<script/>")) {
             setError('What are you doing? Remove that script tag.')
         }
         else {
-            console.log(post)
-            setTimeout(() => {
-            dispatch(createPost(post))}
-            , 5000)
+            dispatch(createPost(post))
             alert('Post created')
+            window.location.reload()
             setTitle('')
             setContent('')
             setSignature('')
@@ -94,9 +91,7 @@ export default function Create() {
 
             }
         )
-        console.log(res)
         const file = await res.json()
-        console.log(res)
         setImage(file.secure_url)
         setLoading(false)
     }
@@ -180,9 +175,9 @@ export default function Create() {
                             }}
 
                             onChange={handleChange}
-                            value={categories}
+
                         >
-                            <option value="">Select a category</option>
+                            <option value="" disabled>Select a category</option>
                             {categoriesList.map(category => (
                                 <option key={category.id} value={category.id}>{category.name}</option>
                             ))}
@@ -207,7 +202,7 @@ export default function Create() {
 
                         <div className='grid grid-cols-3 gap-1'>
 
-                            {post.categories.map(c => (
+                            {post.categories.map((c,i) => (
 
                                 <button
                                     className="block mt-3 bg-white border hover:border-gray-500 rounded shadow leading-tight focus:outline-none text-sm focus:shadow-outline"
@@ -219,7 +214,7 @@ export default function Create() {
                                         color: '#E3E3E3E3',
                                         textAlign: 'center',
                                     }}
-                                    key={c}
+                                    key={i}
                                     type="button"
                                     onClick={removeCategory}
                                     value={c}
@@ -237,7 +232,7 @@ export default function Create() {
                             <button onClick={removeImage} className="hidden" type="button" id='removeImage' />
                             {loading ? <p>Loading...</p> : <div className='mx-5' style={{ width: "10vw" }}><label htmlFor="removeImage"><img id="imgError" src={image || null} alt="No image." /></label></div>}
                         </div>
-                        <button id="buttonPost" className="shadow appearance-none leading-tight focus:outline-none focus:shadow-outline" type="submit">Post it!</button>
+                        <button id="buttonPost" className="shadow appearance-none leading-tight py-1 focus:outline-none focus:shadow-outline" type="submit">Post it!</button>
                     </div>
                     <p className="text-gray-700 text-xs italic mt-2">{error}</p>
                 </form>

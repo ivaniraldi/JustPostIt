@@ -63,6 +63,34 @@ const rootReducer = (state = initialState, action) => {
                     post.signature.toLowerCase().includes(action.payload.toLowerCase())),
                 
             }
+        case "RESET_POST":
+            return {
+                ...state,
+                isLoading: false,
+                post: {},
+            }
+        case "FILTER_BY_CATEGORY":
+            return {
+                ...state,
+                isLoading: false,
+                filteredPosts: state.posts.filter(post => post.Categories?.filter(category => category.name.toLowerCase().includes(action.payload.toLowerCase())).length > 0),
+            }
+        case "RESET_FILTER":
+            return {
+                ...state,
+                isLoading: false,
+                filteredPosts: state.posts,
+            }
+        case "SORT_BY_ID":
+            return {
+                ...state,
+                isLoading: false,
+                filteredPosts: state.filteredPosts.sort((a, b) => 
+                {
+                    return b.id - a.id
+                })
+            }
+
             
 
             

@@ -46,11 +46,13 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-    const { title, content, image, signature, categories } = req.body;
-    const createdAt= new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})
+    const { title, content, image, signature, categories, comments } = req.body;
+    const toDay = new Date();
+    const createdAt = toDay.toLocaleString("en-US", {timeZone: "America/Argentina/Buenos_Aires"})
 
 
-    const post = await Post.create({title,content,image,signature, createdAt});
+
+    const post = await Post.create({title,content,image,signature, createdAt, comments});
     const cats = categories?.map(async c => {
     const categ = await Categories.findByPk(c);
     
@@ -75,8 +77,8 @@ router.delete("/:id", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
     //update a post but not the categories
-    const { title, content, image, signature } = req.body;
-    const post = await Post.update({title,content,image,signature}, {
+    const { title, content, image, signature, comments } = req.body;
+    const post = await Post.update({title,content,image,signature,comments}, {
         where: {
             id: req.params.id
         }

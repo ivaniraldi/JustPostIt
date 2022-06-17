@@ -12,23 +12,32 @@ module.exports = (sequelize) => {
     title: {
       type: DataTypes.STRING,
       allowNull: true,
+      defaultValue: "",
     },
     content: {
       type: DataTypes.STRING,
       allowNull: false,
+      defaultValue: "",
     },
     image: {
       type: DataTypes.STRING,
       allowNull: true,
+      defaultValue: "",
     },
     signature: {
       type: DataTypes.STRING,
       allowNull: true,
+      defaultValue: "",
     },
     createdAt: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
       allowNull: false,
-    }
+    },
+    comments: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: true,
+      defaultValue: [],
+    },
   }, {
     timestamps: false,
   });

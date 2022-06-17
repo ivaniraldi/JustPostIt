@@ -7,13 +7,24 @@ input::placeholder{
 textarea::placeholder{
   color: #bababa81;
 }
+#pDash{
+  background-color: #18191a;
+  color: #e1e1e1;
+  border: #bababa81;
+  padding: .6vw;
+  border-radius: 8px;
+}
+#pDash:hover{
+  background-color: #40404081;
+  border: #18191a;
+}
 #buttonPost{
   background-color: #362855;
   border: none;
   border-radius: 5px;
   font-weight: 700;
   color: #e1e1e1;
-  height: 5vh;
+
 }
 #buttonPost:hover{
   background-color: #4e3d71;
@@ -22,6 +33,13 @@ textarea::placeholder{
   font-weight: 700;
   color: #dbdbdb;
   height: 5vh;
+}
+#buttonCat{
+  background-color: #242526;
+}
+#buttonCat:hover{
+  background-color: #2b2b2b;
+  border: none;
 }
 /* if the images dont have a src are not visible */
 #imgError:not([src]){
@@ -33,10 +51,10 @@ textarea::placeholder{
   flex-wrap: wrap;
 }
 #principal {
-  width: 75%;
+  width: 70%;
 }
 #sidebar {
-  width: 25%;
+  width: 30%;
 }
 #navBarIcons{
   width: 25vw;
@@ -53,6 +71,7 @@ textarea::placeholder{
 }
 html {
   scroll-behavior: smooth;
+  word-break: break-all;
 }
 ::-webkit-scrollbar {
   display: none;

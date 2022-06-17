@@ -11,6 +11,7 @@ export default function Cards() {
         dispatch(getPosts())
     }, [dispatch])
     const postsMapped = useSelector(state => state.filteredPosts)
+    postsMapped.sort((a, b) => {return b.id - a.id})
   return (
     <div className=''>
       <Create />

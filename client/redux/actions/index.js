@@ -115,9 +115,48 @@ export function createCategory(category) {
             );
         }
 }
+export function putComment(id, comment) {
+    return function(dispatch) {
+        axios.put(`/post/${id}`, comment)
+            .then(response => {
+                dispatch({
+                    type: 'PUT_COMMENT',
+                    payload: response.data
+                });
+            }
+            )
+            .catch(error => {
+                console.log(error);
+            }
+            );
+        }
+}
+
+
 export function filterPosts(post) {
     return {
         type: 'FILTER_POSTS',
         payload: post
+    }
+}
+export function resetPost(){
+    return {
+        type: 'RESET_POST'
+    }
+}
+export function filterByCategory(category) {
+    return {
+        type: 'FILTER_BY_CATEGORY',
+        payload: category
+    }
+}
+export function resetFilter(){
+    return {
+        type: 'RESET_FILTER'
+    }
+}
+export function filterById(){
+    return {
+        type: 'SORT_BY_ID'
     }
 }
