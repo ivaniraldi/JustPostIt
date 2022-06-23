@@ -7,25 +7,14 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
 export default function PostDetail() {
-  let id = location.pathname.split('/')[2]
-  const dispatch = useDispatch()
+  const id = location.pathname.split('/')[2]
 
-  useEffect(() => {
-    dispatch(getPost(id))
-  }
-    , [dispatch, id])
-  const post = useSelector(state => state.post)
-
-
-  if (!post) {
-    return <div>Loading...</div>
-  }
   return (
     <div className=''>
       <NavBar />
       <div className="flex justify-center pt-16">
         <div className='sm:w-1/2 mx-2 '>
-          <CardDetail id={post.id} {...post} comments={post.comments} />
+          <CardDetail id={id} />
         </div>
 
       </div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen, faHouse,
-  faGear,
+  faGear, faUser, faSignInAlt, faSignOutAlt, 
  } from '@fortawesome/free-solid-svg-icons'
 import s from './NavBar.module.css'
 import { filterPosts } from '../../redux/actions'
@@ -13,12 +13,28 @@ export default function NavBar() {
   const [search, setSearch] = useState('')
   const dispatch = useDispatch()
 
+
+  const currentUser = localStorage.getItem('name')
+  const user = localStorage.getItem('user')
+
+    
   const handleSearch = (e) => {
     setSearch(e.target.value)
+
 
     dispatch(filterPosts(e.target.value))
   }
   const postButton =  location.pathname === "/" ? true : false;
+  const logOrProfile= currentUser ? `/profile/${user}` :"/login";
+  const handleLogout = () => {
+    localStorage.removeItem('user')
+    localStorage.removeItem('email')
+    localStorage.removeItem('name')
+    localStorage.removeItem('role')
+    localStorage.removeItem('token')
+    window.location.reload()
+  }
+
   return (
     <nav className="flex  px-2 sm:px-4 pt-1 fixed w-full "
     style={{
@@ -36,21 +52,22 @@ export default function NavBar() {
 
       </div>
       <ul id="navBarIcons" className="flex flex-row justify-between text-xl font-medium self-center">
+
       <li className="">      
         <Link to='/' className="text-gray-300 hover:text-gray-400"><FontAwesomeIcon icon={faHouse} /></Link>
       </li>
-      <li className="">
-        <Link to='/createcategory' className="text-gray-300 hover:text-gray-400"><FontAwesomeIcon icon={faGear} /></Link>
-      </li>
-      <li className="">
 
+      <li className="">
+        <Link to={logOrProfile} className="text-gray-300 hover:text-gray-400"><FontAwesomeIcon icon={faUser} /></Link>
+      </li>
+
+      <li className="">
       <a href={postButton? "#create": "/"}><p className="text-gray-300 hover:text-gray-400"><FontAwesomeIcon icon={faPen} /></p></a>
       </li>
       
-      {/* <Link to="/"><p className="block py-2 pr-4 pl-3 text-gray-300 "> Home</p></Link>
-
-      <Link to="/createcategory"><p className="block py-2 pr-4 pl-3 text-gray-300"> Create Category</p></Link> */}
-
+      <li className={currentUser? "contents":"hidden"}>
+        <a href='/' onClick={handleLogout} className="text-gray-300 hover:text-gray-400"><FontAwesomeIcon icon={faSignOutAlt} /></a>
+      </li>
     </ul> 
     </nav> 
 

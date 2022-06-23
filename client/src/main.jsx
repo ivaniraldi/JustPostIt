@@ -11,7 +11,7 @@ import axios from 'axios'
 const heroku =  "https://justposthis.herokuapp.com/"
 const local= "http://localhost:3001/"
 
-axios.defaults.baseURL=heroku;
+axios.defaults.baseURL=local;
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(

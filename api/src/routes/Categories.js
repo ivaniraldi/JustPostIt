@@ -16,10 +16,10 @@ router.get("/", (req, res) => {
         );
 }
 );
-router.get("/:id", async (req, res) => {
+router.get("/:categoryId", async (req, res) => {
     Categories.findOne({
         where: {
-            id: req.params.id
+            categoryId: req.params.categoryId
         }
     })
     .then(category => {
@@ -43,18 +43,29 @@ router.post("/", async (req, res) => {
 }
 );
 
-router.put("/:id", async (req, res) => {
+router.put("/:categoryId", async (req, res) => {
     const { name } = req.body;
     const category = await Categories.update({
         name
     }, {
         where: {
-            id: req.params.id
+            categoryId: req.params.categoryId
         }
     });
     res.json(category);
 }
 );
+
+router.delete("/:categoryId", async (req, res) => {
+    const category = await Categories.destroy({
+        where: {
+            categoryId: req.params.categoryId
+        }
+    });
+    res.json(category);
+}
+);
+
 
 
 module.exports = router;

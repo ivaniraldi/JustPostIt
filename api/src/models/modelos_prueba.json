@@ -5,13 +5,14 @@
     "content": "Tus ojos son como dos luceros\nQue iluminan mi camino\nTu los apagaste\nY me hice mierda contra un pino",
     "image": "https://www.pngfind.com/pngs/m/545-5459514_es-un-ojo-septiceye-sam-pixel-art-hd.png",
     "signature": "Franco",
-    "createdAt": "2022-06-16T00:00:00.000Z",
+    "createdAt": "6/17/2022, 1:56:04 AM",
+    "comments": [],
     "Categories": [
       {
-        "name": "Literatura",
+        "name": "Literature",
         "Post_Categories": {
-          "createdAt": "2022-06-16T11:16:56.299Z",
-          "updatedAt": "2022-06-16T11:16:56.299Z",
+          "createdAt": "2022-06-17T04:56:04.282Z",
+          "updatedAt": "2022-06-17T04:56:04.282Z",
           "PostId": 1,
           "CategoryId": 2
         }
@@ -24,13 +25,14 @@
     "content": "«N.I.B» es una canción lanzada por la banda británica de heavy metal, Black Sabbath. Primero apareció como el cuarto tema del primer álbum de la banda Black Sabbath.",
     "image": "https://m.media-amazon.com/images/I/81D4ic8MxvL.jpg",
     "signature": "Ivan",
-    "createdAt": "2022-06-16T00:00:00.000Z",
+    "createdAt": "6/17/2022, 1:57:00 AM",
+    "comments": [],
     "Categories": [
       {
         "name": "Music",
         "Post_Categories": {
-          "createdAt": "2022-06-16T11:19:25.997Z",
-          "updatedAt": "2022-06-16T11:19:25.997Z",
+          "createdAt": "2022-06-17T04:57:00.787Z",
+          "updatedAt": "2022-06-17T04:57:00.787Z",
           "PostId": 2,
           "CategoryId": 4
         }
@@ -38,8 +40,8 @@
       {
         "name": "Random",
         "Post_Categories": {
-          "createdAt": "2022-06-16T11:19:26.000Z",
-          "updatedAt": "2022-06-16T11:19:26.000Z",
+          "createdAt": "2022-06-17T04:57:00.788Z",
+          "updatedAt": "2022-06-17T04:57:00.788Z",
           "PostId": 2,
           "CategoryId": 3
         }
@@ -52,13 +54,14 @@
     "content": "Una vez conoci a un tipo que se llamaba Franco Bouzas, lo conoci gracias a mis amigos y puedo asegurar que no hay ser humano sobre la tierra mas perfecto y viril.",
     "image": "https://pbs.twimg.com/media/FOUNa1-XsAsuGqV.jpg",
     "signature": "JóÒtTíÌtTáÀhH CABJ",
-    "createdAt": "2022-06-16T00:00:00.000Z",
+    "createdAt": "6/17/2022, 1:57:29 AM",
+    "comments": [],
     "Categories": [
       {
         "name": "Random",
         "Post_Categories": {
-          "createdAt": "2022-06-16T11:20:56.011Z",
-          "updatedAt": "2022-06-16T11:20:56.011Z",
+          "createdAt": "2022-06-17T04:57:29.520Z",
+          "updatedAt": "2022-06-17T04:57:29.520Z",
           "PostId": 3,
           "CategoryId": 3
         }
@@ -66,49 +69,107 @@
     ]
   },
   {
-    "id": 5,
+    "id": 4,
     "title": "Un post de prueba",
-    "content": "es para ver que ande todo bien y no le pinte la loca a la aplicación, de paso posteo la imagen con la nueva cloud de la aplicación :)",
+    "content": "Esto es una prueba para ver que ande todo bien y no hayan errores, de paso posteo la imagen con la nueva cloud de la aplicación :)",
     "image": "https://res.cloudinary.com/ivansyko/image/upload/v1655379238/jflejc23paeiqsfjttcw.png",
     "signature": "Ivan",
-    "createdAt": "2022-06-16T00:00:00.000Z",
+    "createdAt": "6/17/2022, 1:59:06 AM",
+    "comments": [
+      "User3839: Ya que estamos hago un comentario de prueba.",
+      "User6716: Y dos",
+      "User4382: Ahora 3 para llegar al ver más",
+      "User9788: Para saber el contexto clickeá en ver más:"
+    ],
     "Categories": [
       {
-        "name": "Random",
+        "name": "Literature",
         "Post_Categories": {
-          "createdAt": "2022-06-16T11:34:45.532Z",
-          "updatedAt": "2022-06-16T11:34:45.532Z",
-          "PostId": 5,
-          "CategoryId": 3
-        }
-      },
-      {
-        "name": "NSFW",
-        "Post_Categories": {
-          "createdAt": "2022-06-16T11:34:45.535Z",
-          "updatedAt": "2022-06-16T11:34:45.535Z",
-          "PostId": 5,
-          "CategoryId": 1
-        }
-      },
-      {
-        "name": "Literatura",
-        "Post_Categories": {
-          "createdAt": "2022-06-16T11:34:45.537Z",
-          "updatedAt": "2022-06-16T11:34:45.537Z",
-          "PostId": 5,
+          "createdAt": "2022-06-17T04:59:06.762Z",
+          "updatedAt": "2022-06-17T04:59:06.762Z",
+          "PostId": 4,
           "CategoryId": 2
         }
       }
     ]
   },
   {
-    "id": 4,
+    "id": 7,
+    "title": "A new post to my friend",
+    "content": "Hello Iván, it's Raj, from India, nice app! You got it ",
+    "image": "",
+    "signature": "Raj",
+    "createdAt": "6/18/2022, 10:02:42 PM",
+    "comments": [],
+    "Categories": [
+      {
+        "name": "Random",
+        "Post_Categories": {
+          "createdAt": "2022-06-19T01:02:42.614Z",
+          "updatedAt": "2022-06-19T01:02:42.614Z",
+          "PostId": 7,
+          "CategoryId": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "title": "jksdhfsfjkdhfskd",
+    "content": "sjkdhfdjkfhsdjkfh",
+    "image": "https://res.cloudinary.com/ivansyko/image/upload/v1655677927/nv6av9hnr4na3x31xqmh.jpg",
+    "signature": "ºjkahkajshdijash",
+    "createdAt": "6/19/2022, 7:32:10 PM",
+    "comments": [],
+    "Categories": [
+      {
+        "name": "Literature",
+        "Post_Categories": {
+          "createdAt": "2022-06-19T22:32:10.227Z",
+          "updatedAt": "2022-06-19T22:32:10.227Z",
+          "PostId": 9,
+          "CategoryId": 2
+        }
+      },
+      {
+        "name": "Art",
+        "Post_Categories": {
+          "createdAt": "2022-06-19T22:32:10.231Z",
+          "updatedAt": "2022-06-19T22:32:10.231Z",
+          "PostId": 9,
+          "CategoryId": 6
+        }
+      }
+    ]
+  },
+  {
+    "id": 5,
     "title": "perdí",
     "content": "perdí",
     "image": "",
-    "signature": "perder",
-    "createdAt": "2022-06-16T00:00:00.000Z",
+    "signature": "perdí",
+    "createdAt": "6/17/2022, 1:59:37 AM",
+    "comments": [],
+    "Categories": []
+  },
+  {
+    "id": 8,
+    "title": "perdí",
+    "content": "perdí",
+    "image": "",
+    "signature": "perdí",
+    "createdAt": "6/18/2022, 11:40:55 PM",
+    "comments": [],
+    "Categories": []
+  },
+  {
+    "id": 6,
+    "title": "Una foto que me saco Jhony",
+    "content": "Era un lindo dia y nos fuimos a tomar matesitos a la plaza.\nSacamos un monton de fotos.",
+    "image": "https://res.cloudinary.com/ivansyko/image/upload/v1655445022/vxposmj2vblxjlhzfisg.jpg",
+    "signature": "Ivan",
+    "createdAt": "6/17/2022, 2:50:45 AM",
+    "comments": [],
     "Categories": []
   }
 ]

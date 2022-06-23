@@ -12,34 +12,35 @@ export default function Create() {
     const [loading, setLoading] = useState(false)
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
-    const [signature, setSignature] = useState('')
     const [categories, setCategories] = useState([])
     const [error, setError] = useState('')
     useEffect(() => {
         dispatch(getCategories())
     }
         , [])
+        const user = useSelector(state => state.user)
     const categoriesList = useSelector(state => state.categories)
-    function searchCategory(id) {
-        const category = categoriesList.find(category => category.id == id)
+    function searchCategory( id ) {
+        const category = categoriesList.find(category => category.categoryId == id)
         return category.name
 
     }
-
+    const User = JSON.parse(localStorage.getItem('user')) || {}
+    
 
     const post = {
         title: title,
         content: content,
-        signature: signature,
         categories: categories,
         image: image,
-        comments: []
+        comments: [],
+        userId: User
 
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (title.length < 1 || content.length < 1 || signature.length < 1) {
+        if (title.length < 1 || content.length < 1) {
             setError('Please fill out all fields')
         }
         else if (content.includes("<script>" || "<script/>")) {
@@ -51,7 +52,6 @@ export default function Create() {
             window.location.reload()
             setTitle('')
             setContent('')
-            setSignature('')
             setCategories([])
             setImage('')
             setError('')
@@ -66,8 +66,6 @@ export default function Create() {
             setTitle(e.target.value)
         } else if (e.target.name === 'content') {
             setContent(e.target.value)
-        } else if (e.target.name === 'signature') {
-            setSignature(e.target.value)
         }
         else if (e.target.name === 'categories') {
             if (!categories.includes(e.target.value)) {
@@ -100,6 +98,7 @@ export default function Create() {
     }
 
 
+
     return (
         <div>
             <div className='hidden sm:content'>
@@ -109,6 +108,7 @@ export default function Create() {
                 width: '100%',
                 height: '100%',
             }}>
+               
                 <form
                     className='mt-5 rounded'
                     style={{
@@ -127,6 +127,7 @@ export default function Create() {
                         placeholder="Title"
                         type="text"
                         name="title"
+                        required
                         value={title}
                         onChange={handleChange}
                     />
@@ -148,20 +149,6 @@ export default function Create() {
                         cols="30"
                         rows="10"
                     />
-                    <label className="block text-gray-300 text-sm font-bold"></label>
-                    <input style={{
-                        backgroundColor: '#ffffff1a',
-                        border: "none",
-                        padding: "0.3vw",
-                        borderRadius: "5px",
-                        color: '#E3E3E3E3',
-                    }} className="shadow appearance-none border w-full text-gray-300 leading-tight focus:outline-none focus:shadow-outline"
-                        type="text"
-                        name="signature"
-                        placeholder='Alias'
-                        value={signature}
-                        onChange={handleChange}
-                    />
                     <div className='grid grid-cols-2'>
                         <select
                             className="block mt-3 bg-white border hover:border-gray-500 rounded shadow leading-tight focus:outline-none text-sm focus:shadow-outline"
@@ -177,9 +164,9 @@ export default function Create() {
                             onChange={handleChange}
 
                         >
-                            <option value="" disabled>Select a category</option>
+                            <option value="" selected disabled>Select a category</option>
                             {categoriesList.map(category => (
-                                <option key={category.id} value={category.id}>{category.name}</option>
+                                <option key={category.categoryId} value={category.categoryId}>{category.name}</option>
                             ))}
                         </select>
                         <label htmlFor="inputImage"

@@ -1,93 +1,52 @@
 const express = require("express");
 const router = express.Router();
-const { Post, Categories } = require('../db.js')
+const { Post, Categories, User, Comments } = require('../db.js')
 const axios = require("axios");
+const passport = require("passport");
+const { checkRoles } = require("../utils/models/models.js");
+const controllersPost = require("../Controllers/Post");
 
 
-router.get("/", (req, res) => {
-//get all posts including categories
-    Post.findAll({
-        include: [{
-            model: Categories,
-            attributes: ['name']
-        }]
-    })
-        .then(posts => {
-            res.json(posts);
-        }
-        )
-        .catch(err => {
-            res.status(500).json({ message: err.message });
-        }
-        );
+router.get("/", 
+    // passport.authenticate("jwt", { session: false }),
+    // checkRoles("admin", "user"),
+    controllersPost.get
 
-});
+)
 
-router.get("/:id", async (req, res) => {
-    //find a post by id including categories
-    Post.findOne({
-        where: {
-            id: req.params.id
-        },
-        include: [{
-            model: Categories,
-            attributes: ['name']
-        }]
-    })
-        .then(post => {
-            res.json(post);
-        }
-        )
-        .catch(err => {
-            res.status(500).json({ message: err.message });
-        }
-        );
+router.post("/", 
+    passport.authenticate("jwt", { session: false }),
+    checkRoles("user", "admin"),
+    controllersPost.post
+)
 
-});
+router.delete("/:id", 
+    controllersPost.delete
+)
 
-router.post("/", async (req, res) => {
-    const { title, content, image, signature, categories, comments } = req.body;
-    const toDay = new Date();
-    const createdAt = toDay.toLocaleString("en-US", {timeZone: "America/Argentina/Buenos_Aires"})
+router.get("/:id", 
+    controllersPost.getId
+)
+router.get("/:id/comments", 
+    controllersPost.getComments
+)
 
+router.post("/:id/comments", 
+passport.authenticate("jwt", { session: false }),
+checkRoles("admin", "user"),
+    controllersPost.postComment
+)
 
-
-    const post = await Post.create({title,content,image,signature, createdAt, comments});
-    const cats = categories?.map(async c => {
-    const categ = await Categories.findByPk(c);
+router.put("/:id/comments/:commentId", 
+passport.authenticate("jwt", { session: false }),
+checkRoles("admin", "user"),
+    controllersPost.putComments
     
-    post.addCategory(categ);
-    });
-    await Promise.all(cats)
-    res.send('Your post has been created successfully id:' + post.id);
+)
 
-}
-
-);
-
-router.delete("/:id", async (req, res) => {
-    const post = await Post.destroy({
-        where: {
-            id: req.params.id
-        }
-    });
-    res.json(post);
-}
-);
-
-router.put("/:id", async (req, res) => {
-    //update a post but not the categories
-    const { title, content, image, signature, comments } = req.body;
-    const post = await Post.update({title,content,image,signature,comments}, {
-        where: {
-            id: req.params.id
-        }
-    });
-    res.json(post);
-    
-}
-);
-
+router.delete("/:id/comments/:commentId", 
+    controllersPost.deleteComments
+)
 
 
 

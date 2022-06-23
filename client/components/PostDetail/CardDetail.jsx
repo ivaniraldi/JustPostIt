@@ -23,18 +23,22 @@ export default function CardDetail({ id }) {
     const [error, setError] = useState("")
     const [post, setPost] = useState(postCard)
   
-    const randomId = () => {
-      let id = Math.floor(Math.random() * 10000)
-      return id
+
+  const IDUSER = localStorage.getItem('user')
+
+    let name = ""
+    if (postCard.User) {
+      name = postCard.User.name
     }
-    let commentFinal = "User" + randomId() + ": " + commentUser;
-    let commentToPost = { comments: [...comments, commentFinal] } || { comments: [commentFinal] }
-  
+
+    let commentToPost= { userId: IDUSER, comment: commentUser }
     const handleSubmit = (e) => {
       e.preventDefault()
       if (commentUser.length > 0) {
-        dispatch(putComment(postCard.id, commentToPost))
-        window.location.reload()
+        dispatch(putComment(id, commentToPost))
+        dispatch(getPost(id))
+        dispatch(getPost(id))
+        setCommentUser('')
       }
       else {
         setError("You must write a comment.")
@@ -46,14 +50,9 @@ export default function CardDetail({ id }) {
         handleSubmit(e);
       }
     };
-    const commentsParsed = postCard.comments?.map((c, i) => {
-      const user = c.split(":")[0]
-      const comment = c.split(":")[1]
-      const id = i
-      const userComment = { user: user, comment: comment, id: id }
-      return userComment
-    } 
-    ) || [];
+    const commentsParsed = postCard.Comments || [];
+
+
     const [category, setCategory] = useState('')
     const changeCategory = (categoryname) => {
       setCategory(categoryname)
@@ -114,9 +113,9 @@ export default function CardDetail({ id }) {
             <img className='w-10 inline mt-2 ml-2 mr-2' src="https://i.ibb.co/3mHWrhT/letra-p.png" alt="" />
             <div className=''>
   
-              <h1 className="mt-2 font-medium text-sm tracking-tight text-gray-400">Usuario 00{postCard.id}</h1>
+              <h1 className="mt-2 font-medium text-sm tracking-tight text-gray-400">{name}</h1>
   
-              <Link to={`/post/${postCard.id}`} state={{ post }}><p className='text-gray-500 text-xs' >{timeAgoPost} • <FontAwesomeIcon icon={faEarth} /></p></Link>
+              <p className='text-gray-500 text-xs' >{timeAgoPost} • <FontAwesomeIcon icon={faEarth} /></p>
             </div>
           </div>
           <div className='mx-4 mt-2'>
@@ -141,7 +140,7 @@ export default function CardDetail({ id }) {
             </div>
             <div className='mt-1 pb-2' style={{ borderBottom: "1px solid #ffffff1a" }}>
   
-              <p className="text-right mr-2" style={{ color: "#E3E3E3E3" }}>{postCard.signature}.</p>
+              <p className="text-right mr-2" style={{ color: "#E3E3E3E3" }}>{name}.</p>
   
             </div>
             <div className='grid sm:grid-cols-4 grid-cols-3 text-center mt-2' >{postCard.Categories?.map((category, i) => {
@@ -168,7 +167,7 @@ export default function CardDetail({ id }) {
             <div className={`${viewMore ? `content` : `hidden`}`}>{commentsParsed?.map((c, i) => {
               return <div key={i}>
                 <div className='w-full text-gray-300 rounded-xl p-1 my-2' style={{ border: "1px solid #ffffff1a" }}>
-                  <p className="text-xs font-bold text-gray-500">{c.user}</p>
+                  <p className="text-xs font-bold text-gray-500">{c.userName}</p>
                   <p style={{whiteSpace:"pre-line"}}>{c.comment}</p>
                 </div>
               </div>
@@ -179,7 +178,7 @@ export default function CardDetail({ id }) {
               <div className={`${viewMore? "hidden":"contents"}`}>
                 <div className='w-full text-gray-300 rounded-xl p-2 my-2' style={{ border: "1px solid #ffffff1a" }}>
                   <div className=''>
-                    <p className="text-xs font-bold text-gray-500">{commentsParsed[commentsParsed.length - 3].user}</p>
+                    <p className="text-xs font-bold text-gray-500">{commentsParsed[commentsParsed.length - 3].userName}</p>
                     <p style={{whiteSpace:"pre-line"}}>{commentsParsed[commentsParsed.length - 3].comment}</p>
                   </div>
                 </div>
@@ -189,7 +188,7 @@ export default function CardDetail({ id }) {
               <div className={`${viewMore? "hidden":"contents"}`}>
                 <div className='w-full text-gray-300 rounded-xl p-2 my-2' style={{ border: "1px solid #ffffff1a" }}>
                   <div className=''>
-                    <p className="text-xs font-bold text-gray-500">{commentsParsed[commentsParsed.length - 2].user}</p>
+                    <p className="text-xs font-bold text-gray-500">{commentsParsed[commentsParsed.length - 2].userName}</p>
                     <p style={{whiteSpace:"pre-line"}}>{commentsParsed[commentsParsed.length - 2].comment}</p>
                   </div>
                 </div>
@@ -199,7 +198,7 @@ export default function CardDetail({ id }) {
               <div className={`${viewMore? "hidden":"contents"}`}>
                 <div className='w-full text-gray-300 rounded-xl p-2 my-2' style={{ border: "1px solid #ffffff1a" }}>
                   <div className=''>
-                    <p className="text-xs font-bold text-gray-500">{commentsParsed[commentsParsed.length - 1].user}</p>
+                    <p className="text-xs font-bold text-gray-500">{commentsParsed[commentsParsed.length - 1].userName}</p>
                     <p style={{whiteSpace:"pre-line"}}>{commentsParsed[commentsParsed.length - 1].comment}</p>
                   </div>
                 </div>

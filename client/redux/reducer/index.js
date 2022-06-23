@@ -4,6 +4,11 @@ const initialState = {
     filteredPosts: [],
     categories: [],
     post: {},
+    totalUsers: 0,
+    user: {},
+    comments: [],
+    users: [],
+    user: {},
 }
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -90,6 +95,37 @@ const rootReducer = (state = initialState, action) => {
                     return b.id - a.id
                 })
             }
+        case "REGISTER_USER":
+            return {
+                ...state,
+                isLoading: false,
+                totalUsers: state.totalUsers + 1,
+            }
+        case "LOGIN_USER":
+            return {
+                ...state,
+                isLoading: false,
+                user: action.payload,
+            }
+        case "GET_USERS":
+            return {
+                ...state,
+                isLoading: false,
+                users: action.payload,
+            }
+        case "GET_COMMENTS":
+            return {
+                ...state,
+                isLoading: false,
+                comments: action.payload,
+            }
+        case "GET_USER":
+            return {
+                ...state,
+                isLoading: false,
+                user: action.payload,
+            }
+
 
             
 

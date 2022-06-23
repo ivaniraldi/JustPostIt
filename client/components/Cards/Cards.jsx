@@ -4,6 +4,8 @@ import { getPosts } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import Create from '../Create/Create'
+import Register from '../Login/Register/Register.jsx'
+import Login from '../Login/Register/Login.jsx'
 
 export default function Cards() {
     const dispatch = useDispatch()
@@ -11,7 +13,7 @@ export default function Cards() {
         dispatch(getPosts())
     }, [dispatch])
     const postsMapped = useSelector(state => state.filteredPosts)
-    postsMapped.sort((a, b) => {return b.id - a.id})
+    postsMapped.sort((a, b) => {return b.postId - a.postId})
   return (
     <div className=''>
       <Create />
@@ -21,7 +23,7 @@ export default function Cards() {
     
         {postsMapped?.map(
           (p, i) => {
-            return <Card key={i} id={p.id} {...p}/>
+            return <Card key={i} id={p.postId} comentarios={p.Comments} name={p.User.name} {...p}/>
           }
         )}
   

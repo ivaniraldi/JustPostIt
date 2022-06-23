@@ -1,8 +1,10 @@
-import axios from 'axios';
+import Api from '../../interceptors/base';
+
+
 
 export function getPosts() {
     return function(dispatch) {
-        axios.get('/post')
+        Api.get('/post')
             .then(response => {
                 dispatch({
                     type: 'GET_POSTS',
@@ -18,8 +20,8 @@ export function getPosts() {
 }
 
 export function getPost(id) {
-    return function(dispatch) {
-        axios.get('/post/' + id)
+    return async function(dispatch) {
+        await Api.get('/post/' + id)
             .then(response => {
                 dispatch({
                     type: 'GET_POST',
@@ -36,7 +38,8 @@ export function getPost(id) {
 
 export function createPost(post) {
     return function(dispatch) {
-        axios.post('/post', post)
+        console.log(post)
+        Api.post('/post', post)
             .then(response => {
                 dispatch({
                     type: 'CREATE_POST',
@@ -52,7 +55,7 @@ export function createPost(post) {
 }
 export function deletePost(id) {
     return function(dispatch) {
-        axios.delete('/post/' + id)
+        Api.delete('/post/' + id)
             .then(response => {
                 dispatch({
                     type: 'DELETE_POST',
@@ -68,7 +71,7 @@ export function deletePost(id) {
 }
 export function editPost(post) {
     return function(dispatch) {
-        axios.put('/post/' + post._id, post)
+        Api.put('/post/' + post._id, post)
             .then(response => {
                 dispatch({
                     type: 'EDIT_POST',
@@ -85,7 +88,7 @@ export function editPost(post) {
 
 export function getCategories() {
     return function(dispatch) {
-        axios.get('/categories')
+        Api.get('/categories')
             .then(response => {
                 dispatch({
                     type: 'GET_CATEGORIES',
@@ -101,7 +104,7 @@ export function getCategories() {
 }
 export function createCategory(category) {
     return function(dispatch) {
-        axios.post('/categories', category)
+        Api.post('/categories', category)
             .then(response => {
                 dispatch({
                     type: 'CREATE_CATEGORY',
@@ -117,12 +120,29 @@ export function createCategory(category) {
 }
 export function putComment(id, comment) {
     return function(dispatch) {
-        axios.put(`/post/${id}`, comment)
+        Api.post(`/post/${id}/comments`, comment)
             .then(response => {
                 dispatch({
                     type: 'PUT_COMMENT',
                     payload: response.data
                 });
+            }
+            )
+            .catch(error => {
+                console.log(error);
+            }
+            );
+        }
+}
+
+export function getComments(id) {
+    return function(dispatch) {
+        Api.get(`/post/${id}/comments`)
+            .then(response => {
+                dispatch({
+                    type: 'GET_COMMENTS',
+                    payload: response.data
+                }); 
             }
             )
             .catch(error => {
@@ -159,4 +179,72 @@ export function filterById(){
     return {
         type: 'SORT_BY_ID'
     }
+}
+
+export function registerUser(user) {
+    return function(dispatch) {
+        Api.post('/user/register', user)
+            .then(response => {
+                dispatch({
+                    type: 'REGISTER_USER',
+                    payload: response.data
+                });
+            }
+            )
+            .catch(error => {
+                console.log(error);
+            }
+            );
+        }
+}
+
+export async function loginUser(user) {
+    return function(dispatch) {
+        Api.post('/user/login', user)
+            .then(response => {
+                localStorage.setItem('user', JSON.stringify(response.data.user))
+                dispatch({
+                    type: 'LOGIN_USER',
+                    payload: response.data
+                });
+            }
+            )
+            .catch(error => {
+                console.log(error);
+            }
+            );
+        }
+}
+
+export function getUsers() {
+    return function(dispatch) {
+        Api.get('/user')
+            .then(response => {
+                dispatch({
+                    type: 'GET_USERS',
+                    payload: response.data
+                });
+            }
+            )
+            .catch(error => {
+                console.log(error);
+            }
+            );
+        }
+}
+export function getUser(id) {
+    return function(dispatch) {
+        Api.get('/user/' + id)
+            .then(response => {
+                dispatch({
+                    type: 'GET_USER',
+                    payload: response.data
+                });
+            }
+            )
+            .catch(error => {
+                console.log(error);
+            }
+            );
+        }
 }
