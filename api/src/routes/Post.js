@@ -15,8 +15,8 @@ router.get("/",
 )
 
 router.post("/", 
-    passport.authenticate("jwt", { session: false }),
-    checkRoles("user", "admin"),
+    // passport.authenticate("jwt", { session: false }),
+    // checkRoles("user", "admin"),
     controllersPost.post
 )
 

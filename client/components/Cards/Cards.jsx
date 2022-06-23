@@ -12,14 +12,15 @@ export default function Cards() {
     useEffect(() => {
         dispatch(getPosts())
     }, [dispatch])
+    const user = localStorage.getItem("user")
     const postsMapped = useSelector(state => state.filteredPosts)
     postsMapped.sort((a, b) => {return b.postId - a.postId})
   return (
     <div className=''>
-      <Create />
+      {user? <Create />:null}
       <div className='my-4' style={{border:"1px dotted #2c2c2c"}}/>
 
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 sm:gap-4 gap-2">
     
         {postsMapped?.map(
           (p, i) => {

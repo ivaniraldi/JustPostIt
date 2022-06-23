@@ -219,7 +219,7 @@ export default function Create() {
                             <button onClick={removeImage} className="hidden" type="button" id='removeImage' />
                             {loading ? <p>Loading...</p> : <div className='mx-5' style={{ width: "10vw" }}><label htmlFor="removeImage"><img id="imgError" src={image || null} alt="No image." /></label></div>}
                         </div>
-                        <button id="buttonPost" className="shadow appearance-none leading-tight py-1 focus:outline-none focus:shadow-outline" type="submit">Post it!</button>
+                        <button id="buttonPost" className="shadow appearance-none leading-tight py-1 focus:outline-none h-10 focus:shadow-outline" type="submit">Post it!</button>
                     </div>
                     <p className="text-gray-700 text-xs italic mt-2">{error}</p>
                 </form>
