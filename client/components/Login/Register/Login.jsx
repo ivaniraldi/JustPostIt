@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { registerUser, getUsers, loginUser } from '../../../redux/actions'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { login } from "./loginuser"
 import { Navigate } from 'react-router-dom'
 
@@ -45,6 +45,7 @@ export default function Login() {
         })
         validate()
     }
+    const navigate = useNavigate()
     const handleSubmit =async(e) => {
         validate()
         e.preventDefault()
@@ -56,7 +57,7 @@ export default function Login() {
                 localStorage.setItem("role" ,res.data.user.role)
                 localStorage.setItem("email", res.data.user.email)
                 localStorage.setItem("name", res.data.user.name)
-                window.location.href = "/"
+                navigate("/")
 
               })
               .catch((res) => alert(res));
