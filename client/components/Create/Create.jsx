@@ -91,6 +91,7 @@ export default function Create() {
         )
         const file = await res.json()
         setImage(file.secure_url)
+        alert('Image uploaded')
         setLoading(false)
     }
     const removeImage = () => {
